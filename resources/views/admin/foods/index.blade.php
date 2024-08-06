@@ -40,68 +40,7 @@
         @include('admin.admin_nav')
         <!-- partial -->
         <div class="main-panel">
-{{--            <div class="content-wrapper">--}}
-{{--                <div class="row">--}}
-{{--                    <div class="col-12 grid-margin stretch-card">--}}
-{{--                        <div class="card corona-gradient-card">--}}
-{{--                            <div class="card-body py-0 px-0 px-sm-3">--}}
-{{--                                <div class="row align-items-center">--}}
-{{--                                    <div class="col-4 col-sm-3 col-xl-2">--}}
-{{--                                        <img src="assets/images/dashboard/Group126@2x.png" class="gradient-corona-img img-fluid" alt="">--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-5 col-sm-7 col-xl-8 p-0">--}}
-{{--                                        <h4 class="mb-1 mb-sm-0">Want even more features?</h4>--}}
-{{--                                        <p class="mb-0 font-weight-normal d-none d-sm-block">Check out our Pro version with 5 unique layouts!</p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="col-3 col-sm-2 col-xl-2 ps-0 text-center">--}}
-{{--                        <span>--}}
-{{--                          <a href="{{route('foods.create')}}" target="_blank" class="btn btn-outline-light btn-rounded get-started-btn">Create Food</a>--}}
-{{--                        </span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--                <div class="row">--}}
 
-{{--                    <section class="section" id="menu">--}}
-{{--                        <div class="container">--}}
-{{--                            <div class="row">--}}
-{{--                                <div class="col-lg-4">--}}
-{{--                                    <div class="section-heading">--}}
-{{--                                        <h6>Our Menu</h6>--}}
-{{--                                        <h2>Our selection of cakes with quality taste</h2>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="menu-item-carousel">--}}
-{{--                            <div class="col-lg-12">--}}
-{{--                                <div class="owl-menu-item owl-carousel">--}}
-{{--                                    @foreach($foods as $food)--}}
-
-{{--                                    <div class="item">--}}
-{{--                                        <div style="background-image: url('/storage/{{$food->image}}');" class='card'>--}}
-{{--                                            <div class="price"><h6>${{$food->price}}</h6></div>--}}
-{{--                                            <div class='info'>--}}
-{{--                                                <h1 class='title'><a href="{{route('foods.show',$food->id)}}">{{$food->title}}</a></h1>--}}
-{{--                                                <p class='description'>{{$food->description}}.</p>--}}
-{{--                                                <div class="main-text-button">--}}
-{{--                                                    <img src="{{asset('storage/'.$food->image)}}" height="50">--}}
-{{--                                                    <div class="scroll-to-section"><a href="{{$food->image}}">{{$food->title}} <i class="fa fa-angle-down"></i></a></div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
-{{--                                    @endforeach--}}
-{{--      --}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </section>--}}
             <table class="tab-content">
                 <thead>
                 <tr>

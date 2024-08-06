@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('index');
+        return view('user.index');
     }
     public function redirect()
     {

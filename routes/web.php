@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FoodController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -10,6 +11,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('reservations',ReservationController::class);
+
 Route::get('/home',[HomeController::class,'index'])->name('home');
 Route::get('/redirect',[HomeController::class,'redirect'])->name('redirect');
 Route::resource('/foods', FoodController::class);
@@ -17,6 +20,7 @@ Route::resource('/foods', FoodController::class);
 //Admin
 Route::get('/users',[AdminController::class,'index'])->name('users.index');
 Route::delete('/users/{user}',[AdminController::class,'deleteUser'])->name('users.delete');
+
 
 
 Route::get('/dashboard', function () {
@@ -30,3 +34,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
