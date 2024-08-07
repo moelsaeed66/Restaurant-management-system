@@ -54,7 +54,7 @@ class FoodController extends Controller
      */
     public function show(Food $food)
     {
-        return view('admin.foods.show',compact('food'));
+//        return view('admin.foods.show',compact('food'));
 
     }
 

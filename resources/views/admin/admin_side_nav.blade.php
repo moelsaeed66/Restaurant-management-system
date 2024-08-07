@@ -89,13 +89,24 @@
             </div>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="mdi mdi-security"></i>
               </span>
                 <span class="menu-title">Chefs</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="auth">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{route('chefs.index')}}"> Chef Menu </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{route('chefs.create')}}"> Add Chef</a></li>
+                    {{--                    <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>--}}
+                    {{--                    <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>--}}
+                    {{--                    <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>--}}
+                </ul>
+            </div>
         </li>
+
         <li class="nav-item menu-items">
             <a class="nav-link" href="{{route('reservations.index')}}">
               <span class="menu-icon">

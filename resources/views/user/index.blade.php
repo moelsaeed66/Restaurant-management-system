@@ -76,6 +76,19 @@
                         <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
                         <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>
                         <li class="scroll-to-section">
+                                @auth
+                                <a href="{{route('carts.index')}}">
+                                    Cart[{{$count}}]
+                                    </a>
+                                @endauth
+
+                                    @guest
+                                        Cart[0]
+                                    @endguest
+
+                            </li>
+
+                        <li class="scroll-to-section">
 
                                     @auth
                                         <li class="scroll-to-section">
@@ -187,75 +200,49 @@
 <!-- ***** About Area Ends ***** -->
 
 <!-- ***** Menu Area Starts ***** -->
-@include('user.food')
-<!-- ***** Menu Area Ends ***** -->
-
-<!-- ***** Chefs Area Starts ***** -->
-<section class="section" id="chefs">
+<section class="section" id="menu">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 offset-lg-4 text-center">
+            <div class="col-lg-4">
                 <div class="section-heading">
-                    <h6>Our Chefs</h6>
-                    <h2>We offer the best ingredients for you</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="chef-item">
-                    <div class="thumb">
-                        <div class="overlay"></div>
-                        <ul class="social-icons">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                        </ul>
-                        <img src="assets/images/chefs-01.jpg" alt="Chef #1">
-                    </div>
-                    <div class="down-content">
-                        <h4>Randy Walker</h4>
-                        <span>Pastry Chef</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="chef-item">
-                    <div class="thumb">
-                        <div class="overlay"></div>
-                        <ul class="social-icons">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        </ul>
-                        <img src="assets/images/chefs-02.jpg" alt="Chef #2">
-                    </div>
-                    <div class="down-content">
-                        <h4>David Martin</h4>
-                        <span>Cookie Chef</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="chef-item">
-                    <div class="thumb">
-                        <div class="overlay"></div>
-                        <ul class="social-icons">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google"></i></a></li>
-                        </ul>
-                        <img src="assets/images/chefs-03.jpg" alt="Chef #3">
-                    </div>
-                    <div class="down-content">
-                        <h4>Peter Perkson</h4>
-                        <span>Pancake Chef</span>
-                    </div>
+                    <h6>Our Menu</h6>
+                    <h2>Our selection of cakes with quality taste</h2>
                 </div>
             </div>
         </div>
     </div>
+    <div class="menu-item-carousel">
+        <div class="col-lg-12">
+            <div class="owl-menu-item owl-carousel">
+                @foreach($foods as $food)
+                    <form action="{{route('carts.store',['cart'=>$food->id])}}" method="post">
+                    @csrf
+                    <div class="item">
+
+                        <div style="background-image: url('/storage/{{$food->image}}')" class='card'>
+                            <div class="price"><h6>${{$food->price}}</h6></div>
+                            <div class='info'>
+                                <h1 class='title'>{{$food->title}}</h1>
+                                <p class='description'>{{$food->description}}</p>
+                                <div class="main-text-button">
+                                    <div class="scroll-to-section"><a href="#reservation">Make Reservation <i class="fa fa-angle-down"></i></a></div>
+                                </div>
+                            </div>
+                        </div>
+                            <input type="text" name="quantity" placeholder="Quantity">
+                            <input type="submit" name="submit">
+
+                    </div>
+                    </form>
+                @endforeach
+            </div>
+        </div>
+    </div>
 </section>
+<!-- ***** Menu Area Ends ***** -->
+
+<!-- ***** Chefs Area Starts ***** -->
+@include('user.chef')
 <!-- ***** Chefs Area Ends ***** -->
 
 <!-- ***** Reservation Us Area Starts ***** -->

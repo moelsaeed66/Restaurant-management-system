@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Chef;
 use App\Models\Food;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -14,7 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-//         Food::factory(8)->create();
+         Food::factory(8)->create();
+         Chef::factory(5)->create();
+
 
 //        User::factory()->create([
 //            'name' => 'Test User',

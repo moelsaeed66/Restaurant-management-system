@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ChefController;
 use App\Http\Controllers\FoodController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\UsersController;
@@ -12,6 +14,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('reservations',ReservationController::class);
+Route::resource('chefs', ChefController::class);
+Route::resource('carts', CartController::class);
+Route::delete('carts/empty/{cart}',[CartController::class,'empty'])->name('carts.empty');
 
 Route::get('/home',[HomeController::class,'index'])->name('home');
 Route::get('/redirect',[HomeController::class,'redirect'])->name('redirect');
