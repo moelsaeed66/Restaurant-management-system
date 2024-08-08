@@ -112,7 +112,16 @@
               <span class="menu-icon">
                 <i class="mdi mdi-table-large"></i>
               </span>
-                <span class="menu-title">Reservetions</span>
+                <span class="menu-title">Reservations</span>
+            </a>
+        </li>
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{route('orders.index')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-table-large"></i>
+              </span>
+                <span class="menu-title">Orders</span>
             </a>
         </li>
 

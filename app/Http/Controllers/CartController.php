@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Food;
 use App\Repositories\CartRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -103,8 +104,7 @@ class CartController extends Controller
     public function destroy(string $id)
     {
 //        dd($id);
-        $this->cartRepository->delete($id);
-        return redirect()->route('carts.index');
+
     }
 
     public function empty(string $id)
@@ -112,4 +112,10 @@ class CartController extends Controller
         $this->cartRepository->empty($id);
         return redirect()->route('redirect');
     }
+    public function delete(string $id)
+    {
+        $this->cartRepository->delete($id);
+        return redirect()->route('carts.index');
+    }
+
 }

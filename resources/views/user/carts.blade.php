@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Klassy Cafe - Restaurant HTML Template</title>
     <!--
 
@@ -116,30 +116,33 @@
 <!-- ***** Header Area End ***** -->
 
 <!-- ***** Main Banner Area Start ***** -->
+
 <div id="top">
         <table bgcolor="#708090" align="center">
             <thead>
             <tr>
-                <th>Food Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th colspan="2">Action</th>
+                <th style="padding: 30px">Food Name</th>
+                <th style="padding: 30px">Price</th>
+                <th style="padding: 30px">Quantity</th>
+                <th style="padding: 30px" colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
+            <form action="{{route('orders.store')}}" method="post">
+                @csrf
             @foreach($cart->get() as $item)
 {{--                @dd($cart->food)--}}
                 <tr align="center">
+                    <input type="hidden" name="food_name[]" value="{{$item->food->title}}">
                     <td style="padding: 30px">{{$item->food->title}}</td>
+                    <input type="hidden" name="price[]" value="{{$item->food->price}}">
                     <td style="padding: 30px">{{$item->food->price}}</td>
+                    <input type="hidden" name="quantity[]" value="{{$item->Quantity}}">
                     <td style="padding: 30px">{{$item->Quantity}}</td>
                     <td style="padding: 30px"><a href="{{route('carts.edit',$item->id)}}" class="btn btn-primary">Edit</a></td>
-                    <td style="padding: 30px">
-                        <form action="{{route('carts.destroy',$item->food->id)}}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button class="btn btn-danger" type="submit">DELETE</button>
-                        </form></td>
+
+                    <td style="padding: 30px"><a href="{{route('carts.delete',$item->food->id)}}" class="btn btn-danger">Delete</a></td>
+
 
                 </tr>
             @endforeach
@@ -149,35 +152,55 @@
 
 </div>
 <div align="center">
-    <form action="{{route('carts.empty',['cart'=>$item->id])}}" method="post">
-        @csrf
-        @method('delete')
-        <button class="btn btn-danger" type="submit">Empty Cart</button>
-    </form>
+
+        <a href="{{route('carts.empty',['cart'=>$item->id])}}" class="btn btn-danger">Empty Cart</a>
+
+</div>
+<div align="center" style="padding: 30px">
+    <button type="button" id="order">Order Now</button>
 </div>
 
-<div align="center">
-    <h3>total</h3>
-    {{$cart->total()}}
+<div align="center" id="appear" style="padding: 10px; display: none">
+    <div style="padding: 10px">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Name">
+    </div>
+
+    <div style="padding: 10px">
+        <label>Phone</label>
+        <input type="text" name="phone" placeholder="Phone">
+    </div>
+    <div style="padding: 10px">
+        <label>Address</label>
+        <input type="text" name="address" placeholder="Address">
+    </div>
+
+    <div
+    style="padding: 10px">
+        <input type="submit" class="btn btn-success" value="Order Confirm">
+        <button id="close" type="button" class="btn btn-danger">Close</button>
+    </div>
 </div>
-<!-- ***** Main Banner Area End ***** -->
+</form>
+{{--<div align="center">--}}
+{{--    <h3>total</h3>--}}
+{{--    {{$cart->total()}}--}}
+{{--</div>--}}
 
-<!-- ***** About Area Starts ***** -->
-
-<!-- ***** About Area Ends ***** -->
-
-<!-- ***** Menu Area Starts ***** -->
-
-<!-- ***** Menu Area Ends ***** -->
-
-
-<!-- ***** Reservation Us Area Starts ***** -->
-<
-<!-- ***** Chefs Area Ends ***** -->
-
-<!-- ***** Footer Start ***** -->
 
 <!-- jQuery -->
+<script type="text/javascript">
+    $("#order").click(
+        function () {
+            $("#appear").show();
+        }
+    );
+    $("#close").click(
+        function () {
+            $("#appear").hide();
+        }
+    );
+</script>
 @include('user.user_js')
 </body>
 </html>
