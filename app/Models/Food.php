@@ -11,6 +11,7 @@ class Food extends Model
     protected $fillable=[
         'price','title','description','image'
     ];
+    public $hidden=['image','created_at','updated_at'];
     public function carts()
     {
         return $this->belongsToMany(Cart::class,

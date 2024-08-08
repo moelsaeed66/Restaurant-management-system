@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\ServiceProvider;
+
 return [
 
     /*
@@ -67,6 +70,8 @@ return [
 
     'timezone' => env('APP_TIMEZONE', 'UTC'),
 
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
@@ -122,5 +127,15 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+    'providers' => ServiceProvider::defaultProviders()->merge([
+
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+    ])->toArray(),
+
+    'aliases' => Facade::defaultAliases()->merge([
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+    ])->toArray(),
+
 
 ];
